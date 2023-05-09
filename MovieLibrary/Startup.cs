@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MovieLibraryEntities.Context;
+using MovieLibraryEntities.Dao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace MovieLibrary
                 builder.AddFile("app.log");
             });
             services.AddTransient<IMainService, MainService>();
+            services.AddSingleton<IRepository, Repository>();
             services.AddDbContextFactory<MovieContext>();
             return services.BuildServiceProvider();
         }
